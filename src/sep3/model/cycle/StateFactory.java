@@ -24,6 +24,7 @@ public class StateFactory extends Factory<Integer, State> {
 		makeItem(new Integer(SC_TF0), new ToFetchState0());
 		makeItem(new Integer(SC_TF1), new ToFetchState1());
 		makeItem(new Integer(SC_EX0), new ExecState0());
+		makeItem(new Integer(SC_EX1), new ExecState1());
 		makeItem(new Integer(SC_HLT), new HaltState());
 		makeItem(new Integer(SC_ILL), new IllState());
 	}

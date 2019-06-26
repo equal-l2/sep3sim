@@ -17,9 +17,9 @@ public class ExecState0 extends State {
 		// 次の状態へ
 		int nextState;
 		if (cpu.getDecoder().getToMode() == Decoder.MODE_D) {
-			nextState = StateFactory.SC_HLT;
+			nextState = StateFactory.SC_IF0;
 		} else {
-			nextState = StateFactory.SC_HLT;
+			nextState = StateFactory.SC_EX1;
 		}
 		return cpu.getStateFactory().getState(nextState);
 	}
