@@ -33,6 +33,6 @@ public class InstFetchState1 extends State {
 		cpu.getSBusSelector().selectTo(CPU.REG_PC);
 
 		// 次の状態へ
-		return cpu.getStateFactory().getState(StateFactory.SC_HLT);
+		return cpu.getStateFactory().getState(StateFactory.SC_FF0);
 	}
 }
