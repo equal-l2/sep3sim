@@ -13,7 +13,7 @@ public class HltOperation extends Operation {
 		cpu.getSBus().setValue(cpu.getABus().getValue());
 
 		// Sバスの値は捨てる
-		writeBack(true);
+		writeBack(false);
 
 		// HLT状態にする
 		cpu.getHaltLamp().on();
