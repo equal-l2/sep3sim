@@ -4,13 +4,13 @@ import sep3.*;
 import sep3.model.*;
 import sep3.model.operation.*;
 
-public class FromFetchState1 extends State {
+public class ToFetchState1 extends State {
 	@Override
 	public State clockstep(Model model) {
-		System.out.println("%% FF1 %%");
+		System.out.println("%% TF1 %%");
 		// ステータスカウンタの設定。次の２行は、すべての状態において、最初に必ず記述すること
 		CPU cpu = model.getCPU();
-		cpu.getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_FF1);
+		cpu.getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_TF1);
 
 		/* 主記憶からデータを取り出してMDRへ送る */
 		final Decoder d = cpu.getDecoder();
@@ -22,9 +22,9 @@ public class FromFetchState1 extends State {
 		// データバスの値をMDRへ送る
 		model.getDataBusSelector().selectTo(CPU.REG_MDR);
 
-		if (d.getFromMode() == Decoder.MODE_IP) {
+		if (d.getToMode() == Decoder.MODE_IP) {
 			// レジスタを+1する
-			final int reg = d.getFromRegister();
+			final int reg = d.getToRegister();
 			cpu.getABusSelector().selectFrom(reg);
 			cpu.getBBusSelector().selectFrom();
 			cpu.getALU().operate(InstructionSet.OP_DEC);
@@ -32,7 +32,7 @@ public class FromFetchState1 extends State {
 		}
 
 		// 次の状態へ
-		return cpu.getStateFactory().getState(StateFactory.SC_FF2);
+		return cpu.getStateFactory().getState(StateFactory.SC_EX0);
 	}
 
 }
