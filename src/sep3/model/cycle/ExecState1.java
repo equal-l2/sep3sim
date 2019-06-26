@@ -6,6 +6,7 @@ import sep3.model.*;
 public class ExecState1 extends State {
 	@Override
 	public State clockstep(Model model) {
+		System.out.println("%% EX1 %%");
 		CPU cpu = model.getCPU();
 		cpu.getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_EX1);
 

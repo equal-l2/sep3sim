@@ -23,12 +23,13 @@ public class FromFetchState1 extends State {
 		// データバスの値をMDRへ送る
 		model.getDataBusSelector().selectTo(CPU.REG_MDR);
 
+		// ポストインクリメントを扱う
 		if (d.getFromMode() == Decoder.MODE_IP) {
 			// レジスタを+1する
 			final int reg = d.getFromRegister();
 			cpu.getABusSelector().selectFrom(reg);
 			cpu.getBBusSelector().selectFrom();
-			cpu.getALU().operate(InstructionSet.OP_DEC);
+			cpu.getALU().operate(InstructionSet.OP_INC);
 			cpu.getSBusSelector().selectTo(reg);
 		}
 

@@ -9,6 +9,7 @@ public class IllState extends State {
 
 	@Override
 	public State clockstep(Model model) {
+		System.out.println("%% ILL %%");
 		model.getCPU().getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_ILL);
 		return this;
 	}
