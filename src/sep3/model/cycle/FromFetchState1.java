@@ -13,6 +13,7 @@ public class FromFetchState1 extends State {
 		cpu.getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_FF1);
 
 		/* 主記憶からデータを取り出してMDRへ送る */
+		/* アドレスはFF0でMARに載っているのでそれを使う */
 		final Decoder d = cpu.getDecoder();
 
 		// MAR をアドレスバスに流す

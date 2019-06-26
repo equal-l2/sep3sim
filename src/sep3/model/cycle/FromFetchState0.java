@@ -16,6 +16,7 @@ public class FromFetchState0 extends State {
 
 		final Decoder d = cpu.getDecoder();
 		final int reg = d.getFromRegister();
+		final int mode = d.getFromMode();
 
 		// 指定されたレジスタの値をMAR, MDRに送る
 		// 直接参照の場合はここで値をB0に入れてしまえばいいようにも思えるが
@@ -27,26 +28,25 @@ public class FromFetchState0 extends State {
 		cpu.getABusSelector().selectFrom(reg);
 		// Bバスへのゲートは全て閉じる
 		cpu.getBBusSelector().selectFrom();
-		// ALUにはAバスの値を素通りさせ、Sバスに流す
-		cpu.getALU().operate(InstructionSet.OP_THRA);
-		// Sバスの値をMAR & MDRへ
-		cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR);
 
-		final int mode = d.getFromMode();
+		// プレデクリメントを扱う
+		if (mode == Decoder.MODE_MI) {
+			// ALUにはAバスの値をデクリメントさせ、Sバスに流す
+			cpu.getALU().operate(InstructionSet.OP_DEC);
+			// Sバスの値をMAR, MDR, Fレジスタへ
+			cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR, reg);
+		} else {
+			// ALUにはAバスの値を素通りさせ、Sバスに流す
+			cpu.getALU().operate(InstructionSet.OP_THRA);
+			// Sバスの値をMAR & MDRへ
+			cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR);
+		}
+
 		int next;
-		switch(mode) {
-			case Decoder.MODE_D:
-				next = StateFactory.SC_FF2;
-				break;
-			case Decoder.MODE_MI:
-				// プレデクリメントではこの時点で-1を行う
-				cpu.getABusSelector().selectFrom(reg);
-				cpu.getBBusSelector().selectFrom();
-				cpu.getALU().operate(InstructionSet.OP_DEC);
-				cpu.getSBusSelector().selectTo(reg);
-				// fall-through
-			default:
-				next = StateFactory.SC_FF1;
+		if (mode == Decoder.MODE_D) {
+			next = StateFactory.SC_FF2;
+		} else {
+			next = StateFactory.SC_FF1;
 		}
 
 		return cpu.getStateFactory().getState(next);

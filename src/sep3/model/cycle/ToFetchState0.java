@@ -12,7 +12,7 @@ public class ToFetchState0 extends State {
 		CPU cpu = model.getCPU();
 		cpu.getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_TF0);
 
-		/* Toオペランドのレジスタの内容をMAR, MDRに置く */
+		/* Tオペランドのレジスタの内容をMAR, MDRに置く */
 
 		final Decoder d = cpu.getDecoder();
 		final int reg = d.getToRegister();
@@ -29,14 +29,11 @@ public class ToFetchState0 extends State {
 		cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR);
 
 		int next;
-		switch(d.getToMode()) {
-			case Decoder.MODE_D:
-				next = StateFactory.SC_EX0;
-				break;
-			default:
-				// 間接参照ではTF1でデータを取り出してMDRに載せる
-				// (MIはTオペランドでは使えないので扱わない)
-				next = StateFactory.SC_TF1;
+		if (d.getToMode() == Decoder.MODE_D) {
+			next = StateFactory.SC_EX0;
+		} else {
+			// 間接参照の場合はTF1でデータを取り出す
+			next = StateFactory.SC_TF1;
 		}
 
 		return cpu.getStateFactory().getState(next);
