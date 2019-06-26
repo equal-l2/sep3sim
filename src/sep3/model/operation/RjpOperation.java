@@ -1,7 +1,6 @@
 package sep3.model.operation;
 import sep3.model.CPU;
 
-// 通常のADD命令用
 public class AddOperation extends Operation {
 	private CPU cpu;
 	AddOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
@@ -18,13 +17,5 @@ public class AddOperation extends Operation {
 
 		// Sバスの値をToオペランドに書き込む
 		writeBack(true);
-
-		// PSWの更新
-		int p = psw_NZ(o & 0xFFFF);
-		boolean sameMSBin  = (i & 0x8000) == (j & 0x8000);
-		boolean sameMSBout = (i & 0x8000) == (o & 0x8000);
-		if (sameMSBin && !sameMSBout)			{ p |= CPU.PSW_V; }
-		if (bit(o, 0x10000))					{ p |= CPU.PSW_C; }
-		cpu.getRegister(CPU.REG_PSW).setValue(p);
 	}
 }
