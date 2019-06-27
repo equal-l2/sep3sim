@@ -42,6 +42,16 @@ public class Memory {
 		}
 	}
 
+	// メモリの値をMMIOによるブロックなしで読む
+	// TF1ではTオペランドが指す内容の値を命令に関わらず読み出す
+	// しかしTオペランドを書き込みにしか使わない命令では
+	// この時にMMIOでブロックしては困るので
+	// こういう抜け道を作っておく必要がある
+	public void readValueWithoutBlock() {
+		int addr = addrBus.getValue();
+		dataBus.setValue(mem[addr]);
+	}
+
 	// モデルの初期化
 	public void powerOn() {
 		for (int i = 0; i < mem.length; ++i) { mem[i] = 0; }

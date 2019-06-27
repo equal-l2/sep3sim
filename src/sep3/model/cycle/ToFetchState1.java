@@ -17,18 +17,17 @@ public class ToFetchState1 extends State {
 
 		// MAR をアドレスバスに流す
 		model.getAddrBusSelector().selectFrom(CPU.REG_MAR);
-		// メモリを読み出してデータバスへ出力
-		model.getMemory().access(Memory.MEM_RD);
 
-		// Aバスを使わない命令ではTオペランドのAckで停止されると困る
-		// のでランプを消す
 		switch(d.getOpCode()) {
-			case InstructionSet.OP_CLR: case InstructionSet.OP_HLT: case InstructionSet.OP_ILL: case InstructionSet.OP_JMP:
-			case InstructionSet.OP_MOV: case InstructionSet.OP_NOP: case InstructionSet.OP_RET: case InstructionSet.OP_RIT:
-				System.out.println("Shut the Lamp!");
-				model.getMemory().getAckLamp().off();
+			case InstructionSet.OP_CLR:
+			case InstructionSet.OP_MOV:
+				// Aバスの値を使わず、かつMMIOをTオペランドとして取りうる命令(現時点ではMOVとCLRのみ)
+				// は(TオペランドのAckで停止されると困るので)特別なメソッドでメモリを読み出す
+				model.getMemory().readValueWithoutBlock();
 				break;
-			default: System.out.println("Ignore normal ops " + Integer.toString(d.getOpCode()));
+			default:
+				// メモリを読み出してデータバスへ出力
+				model.getMemory().access(Memory.MEM_RD);
 		}
 
 		// データバスの値をMDRへ送る
