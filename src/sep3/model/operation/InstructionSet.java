@@ -75,10 +75,10 @@ public class InstructionSet extends Factory<Integer, Operation> {
 		makeItem(new Integer(OP_BRZ),  new BrzOperation(cpu));
 		makeItem(new Integer(OP_BRV),  new BrvOperation(cpu));
 		makeItem(new Integer(OP_BRC),  new BrcOperation(cpu));
-		//makeItem(new Integer(OP_RBN),  new RbnOperation(cpu));
-		//makeItem(new Integer(OP_RBZ),  new RbzOperation(cpu));
-		//makeItem(new Integer(OP_RBV),  new RbvOperation(cpu));
-		//makeItem(new Integer(OP_RBC),  new RbcOperation(cpu));
+		makeItem(new Integer(OP_RBN),  new RbnOperation(cpu));
+		makeItem(new Integer(OP_RBZ),  new RbzOperation(cpu));
+		makeItem(new Integer(OP_RBV),  new RbvOperation(cpu));
+		makeItem(new Integer(OP_RBC),  new RbcOperation(cpu));
 		makeItem(new Integer(OP_INC),  new IncOperation(cpu));
 		makeItem(new Integer(OP_DEC),  new DecOperation(cpu));
 		makeItem(new Integer(OP_THRA), new ThraOperation(cpu));
