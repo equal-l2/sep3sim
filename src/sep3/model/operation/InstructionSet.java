@@ -68,9 +68,9 @@ public class InstructionSet extends Factory<Integer, Operation> {
 		makeItem(new Integer(OP_XOR),  new XorOperation(cpu));
 		makeItem(new Integer(OP_AND),  new AndOperation(cpu));
 		makeItem(new Integer(OP_BIT),  new BitOperation(cpu));
-		//makeItem(new Integer(OP_JSR),  new JsrOperation(cpu));
-		//makeItem(new Integer(OP_RJS),  new RjsOperation(cpu));
-		//makeItem(new Integer(OP_SVC),  new SvcOperation(cpu));
+		makeItem(new Integer(OP_JSR),  new JsrOperation(cpu));
+		makeItem(new Integer(OP_RJS),  new RjsOperation(cpu));
+		makeItem(new Integer(OP_SVC),  new SvcOperation(cpu));
 		makeItem(new Integer(OP_BRN),  new BrnOperation(cpu));
 		makeItem(new Integer(OP_BRZ),  new BrzOperation(cpu));
 		makeItem(new Integer(OP_BRV),  new BrvOperation(cpu));
