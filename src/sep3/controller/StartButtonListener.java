@@ -15,6 +15,6 @@ public class StartButtonListener implements ActionListener {
 
 	public void actionPerformed(ActionEvent e){
 		//System.out.println("enter actionlistener of start button");
-		model.run();
+		if (!model.getMemory().getAckLamp().isOn()) model.run();
 	}
 }
