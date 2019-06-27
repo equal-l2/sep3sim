@@ -24,7 +24,7 @@ public class FromFetchState2 extends State {
 		cpu.getSBusSelector().selectTo(CPU.REG_B0);
 
 		// 次の状態へ
-		return cpu.getStateFactory().getState(StateFactory.SC_EX0);
+		return cpu.getStateFactory().getState(StateFactory.SC_TF0);
 	}
 
 }

@@ -1,9 +1,9 @@
 package sep3.model.operation;
 import sep3.model.CPU;
 
-public class SubOperation extends Operation {
+public class CmpOperation extends Operation {
 	private CPU cpu;
-	SubOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	CmpOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
 	public void operate() {
 		// AバスにMDRの値を、BバスへB0の値を出力する
 		useABus(true);
@@ -13,7 +13,7 @@ public class SubOperation extends Operation {
 		int i = cpu.getABus().getValue(); // Tオペランド
 		int j = cpu.getBBus().getValue(); // Fオペランド
 		int j_cmp = ~j + 1;
-		int o = i + j_cmp; // 実質 i - j
+		int o = i + j_cmp; // 実質 i - j (<= i-jでよいのでは説濃厚だな)
 		cpu.getSBus().setValue(o & 0xFFFF);
 
 		// Sバスの値は捨てる

@@ -33,14 +33,15 @@ public class FromFetchState0 extends State {
 		if (mode == Decoder.MODE_MI) {
 			// ALUにはAバスの値をデクリメントさせ、Sバスに流す
 			cpu.getALU().operate(InstructionSet.OP_DEC);
-			// Sバスの値をMAR, MDR, Fレジスタへ
-			cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR, reg);
+			// Sバスの値をFレジスタへ
+			cpu.getSBusSelector().selectTo(reg);
 		} else {
 			// ALUにはAバスの値を素通りさせ、Sバスに流す
 			cpu.getALU().operate(InstructionSet.OP_THRA);
-			// Sバスの値をMAR & MDRへ
-			cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR);
 		}
+		// Sバスの値をMAR & MDRへ
+		// 括りだしのプロ中村が教えてくれた
+		cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR);
 
 		int next;
 		if (mode == Decoder.MODE_D) {

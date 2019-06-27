@@ -48,10 +48,37 @@ public class InstructionSet extends Factory<Integer, Operation> {
 
 	public InstructionSet(CPU cpu) {
 		makeItem(new Integer(OP_HLT),  new HltOperation(cpu));
+		makeItem(new Integer(OP_CLR),  new ClrOperation(cpu));
+		makeItem(new Integer(OP_ASL),  new AslOperation(cpu));
+		makeItem(new Integer(OP_ASR),  new AsrOperation(cpu));
+		makeItem(new Integer(OP_LSL),  new LslOperation(cpu));
+		makeItem(new Integer(OP_LSR),  new LsrOperation(cpu));
+		makeItem(new Integer(OP_ROL),  new RolOperation(cpu));
+		makeItem(new Integer(OP_ROR),  new RorOperation(cpu));
 		makeItem(new Integer(OP_MOV),  new MovOperation(cpu));
 		makeItem(new Integer(OP_JMP),  new JmpOperation(cpu));
+		makeItem(new Integer(OP_RET),  new RetOperation(cpu));
+		makeItem(new Integer(OP_RIT),  new RitOperation(cpu));
 		makeItem(new Integer(OP_ADD),  new AddOperation(cpu));
+		makeItem(new Integer(OP_RJP),  new RjpOperation(cpu));
+		makeItem(new Integer(OP_SUB),  new SubOperation(cpu));
+		makeItem(new Integer(OP_CMP),  new CmpOperation(cpu));
 		makeItem(new Integer(OP_NOP),  new NopOperation(cpu));
+		makeItem(new Integer(OP_OR),   new OrOperation(cpu));
+		makeItem(new Integer(OP_XOR),  new XorOperation(cpu));
+		makeItem(new Integer(OP_AND),  new AndOperation(cpu));
+		makeItem(new Integer(OP_BIT),  new BitOperation(cpu));
+		//makeItem(new Integer(OP_JSR),  new JsrOperation(cpu));
+		//makeItem(new Integer(OP_RJS),  new RjsOperation(cpu));
+		//makeItem(new Integer(OP_SVC),  new SvcOperation(cpu));
+		//makeItem(new Integer(OP_BRN),  new BrnOperation(cpu));
+		//makeItem(new Integer(OP_BRZ),  new BrzOperation(cpu));
+		//makeItem(new Integer(OP_BRV),  new BrvOperation(cpu));
+		//makeItem(new Integer(OP_BRC),  new BrcOperation(cpu));
+		//makeItem(new Integer(OP_RBN),  new RbnOperation(cpu));
+		//makeItem(new Integer(OP_RBZ),  new RbzOperation(cpu));
+		//makeItem(new Integer(OP_RBV),  new RbvOperation(cpu));
+		//makeItem(new Integer(OP_RBC),  new RbcOperation(cpu));
 		makeItem(new Integer(OP_INC),  new IncOperation(cpu));
 		makeItem(new Integer(OP_DEC),  new DecOperation(cpu));
 		makeItem(new Integer(OP_THRA), new ThraOperation(cpu));

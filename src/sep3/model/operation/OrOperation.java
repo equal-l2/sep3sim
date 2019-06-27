@@ -20,7 +20,7 @@ public class OrOperation extends Operation {
 
 		// PSWの更新
 		int p = psw_NZ(o & 0xFFFF);
-		p |= (cpu.getRegister(CPU.REG_PSW).getValue() & CPU.PSW_C) // Cは保存する
+		p |= (cpu.getRegister(CPU.REG_PSW).getValue() & CPU.PSW_C); // Cは保存する
 		cpu.getRegister(CPU.REG_PSW).setValue(p);
 	}
 }

@@ -15,11 +15,14 @@ public class ExecState1 extends State {
 		/* 書き込み先アドレスはTF0でMARに載っているのでそれを使う */
 
 		// MARからアドレスバスへ値を流す
+		// TODO: なくても動く?
 		model.getAddrBusSelector().selectFrom(CPU.REG_MAR);
 		// MDRからデータバスへ値を流す
 		model.getDataBusSelector().selectFrom(CPU.REG_MDR);
 		// 値を書き込む
 		model.getMemory().access(Memory.MEM_WR);
+
+		//TODO: JSR, SVC, RJSは命令の内容をここでやったほうがいいかも?(命令からレジスタをいじる羽目になるので)
 
 		return cpu.getStateFactory().getState(StateFactory.SC_IF0);
 	}

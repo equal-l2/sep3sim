@@ -18,6 +18,7 @@ public class ToFetchState1 extends State {
 		// MAR をアドレスバスに流す
 		model.getAddrBusSelector().selectFrom(CPU.REG_MAR);
 		// メモリを読み出してデータバスへ出力
+		// TODO: TオペランドがMMapped IOのとき、MovToIOaccess?
 		model.getMemory().access(Memory.MEM_RD);
 		// データバスの値をMDRへ送る
 		model.getDataBusSelector().selectTo(CPU.REG_MDR);
@@ -27,7 +28,7 @@ public class ToFetchState1 extends State {
 			final int reg = d.getToRegister();
 			cpu.getABusSelector().selectFrom(reg);
 			cpu.getBBusSelector().selectFrom();
-			cpu.getALU().operate(InstructionSet.OP_DEC);
+			cpu.getALU().operate(InstructionSet.OP_INC);
 			cpu.getSBusSelector().selectTo(reg);
 		}
 
