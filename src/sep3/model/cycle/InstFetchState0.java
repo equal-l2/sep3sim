@@ -20,8 +20,8 @@ public class InstFetchState0 extends State {
 		cpu.getBBusSelector().selectFrom();
 		// ALUはAバスの値をそのままSバスへ流す
 		cpu.getALU().operate(InstructionSet.OP_THRA);
-		// Sバスの値をMAR, MDRへ送る
-		cpu.getSBusSelector().selectTo(CPU.REG_MAR, CPU.REG_MDR);
+		// Sバスの値をMARへ送る
+		cpu.getSBusSelector().selectTo(CPU.REG_MAR);
 
 		// 次の状態へ
 		return cpu.getStateFactory().getState(StateFactory.SC_IF1);

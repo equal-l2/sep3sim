@@ -1,5 +1,6 @@
 package sep3.model.operation;
 import sep3.model.CPU;
+import sep3.model.Register;
 
 public class OrOperation extends Operation {
 	private CPU cpu;
@@ -10,17 +11,18 @@ public class OrOperation extends Operation {
 		useBBus(true);
 
 		// 両バスの値をORしてSバスに渡す
-		int i = cpu.getABus().getValue();
-		int j = cpu.getBBus().getValue();
-		int o = i | j;
+		final int i = cpu.getABus().getValue();
+		final int j = cpu.getBBus().getValue();
+		final int o = i | j;
 		cpu.getSBus().setValue(o & 0xFFFF);
 
 		// Sバスの値をToオペランドに書き込む
 		writeBack(true);
 
 		// PSWの更新
+		final Register psw_ref = cpu.getRegister(CPU.REG_PSW);
 		int p = psw_NZ(o & 0xFFFF);
-		p |= (cpu.getRegister(CPU.REG_PSW).getValue() & CPU.PSW_C); // Cは保存する
-		cpu.getRegister(CPU.REG_PSW).setValue(p);
+		p |= (psw_ref.getValue() & CPU.PSW_C); // Cは保存する
+		psw_ref.setValue(p);
 	}
 }
