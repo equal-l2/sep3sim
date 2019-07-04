@@ -36,8 +36,7 @@ FIB_TAIL: ; レジスタ退避
      MOV R3, (R6)+
      MOV R2, (R6)+
 
-     RJS FIB_TAIL  ; R3はもう使わないので
-                   ; 戻り値で壊れてもよい
+     RJS FIB_TAIL  ; fib(n, a+b, a)
      SUB #3, R6    ; スタックを元に戻す
      RJP FEND
 
