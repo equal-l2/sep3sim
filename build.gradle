@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+defaultTasks 'jar'
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'sep3.Simulator'
+        )
+    }
+}

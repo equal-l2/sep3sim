@@ -8,7 +8,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class PowerSwitch extends JButton {
 	private URL url;
-	static final String onFile  = "sep3/view/powerbutton2.png";	// 電源on時のリソース
+	static final String onFile  = "powerbutton2.png";	// 電源on時のリソース
 	//static final String offFile = "sep3/view/poweroff.png";	// 電源off時のリソース
 	public PowerSwitch() {
 		ImageIcon onIcon = null;

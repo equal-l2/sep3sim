@@ -8,18 +8,16 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 
 public class LED extends JLabel {
-	static final String dir = "sep3/view/";
-
 	// 点灯時にonFile、消灯時にoffFileをアイコンとするLEDを作成
 	public LED(String onFile, String offFile) {
-		URL url = this.getClass().getClassLoader().getResource(dir + offFile);
+		URL url = this.getClass().getClassLoader().getResource(offFile);
 		if (url != null) {
 			ImageIcon offIcon = new ImageIcon(url);
 			setDisabledIcon(offIcon);
 			setPreferredSize(new Dimension(offIcon.getIconWidth(), offIcon.getIconHeight()));
 		}
 
-		url = this.getClass().getClassLoader().getResource(dir + onFile);
+		url = this.getClass().getClassLoader().getResource(onFile);
 		if (url != null) {
 			ImageIcon onIcon = new ImageIcon(url);
 			setIcon(onIcon);

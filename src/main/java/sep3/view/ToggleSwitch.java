@@ -6,8 +6,8 @@ import javax.swing.*;
 // トグルスイッチ
 @SuppressWarnings("serial")
 public class ToggleSwitch extends JToggleButton {
-	static final String onFile  = "sep3/view/toggleon.png";		// on時のリソース
-	static final String offFile = "sep3/view/toggleoff.png";	// off時のリソース
+	static final String onFile  = "toggleon.png";		// on時のリソース
+	static final String offFile = "toggleoff.png";	// off時のリソース
 	public ToggleSwitch() {
 		ImageIcon onIcon = null, offIcon = null;
 		URL url = this.getClass().getClassLoader().getResource(onFile);

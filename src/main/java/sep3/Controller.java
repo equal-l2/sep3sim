@@ -13,6 +13,7 @@ public class Controller {
 		view.getNormalMenu().addActionListener(new RunModeNormalMenuListener(model, view));
 		view.getInstMenu().addActionListener(new RunModeInstStepMenuListener(model, view));
 		view.getClockMenu().addActionListener(new RunModeClockStepMenuListener(model, view));
+		view.getDump().addActionListener(new DumpListener(model, view));
 
 	// ビューの変更をモデルに伝える
 		// 電源スイッチ

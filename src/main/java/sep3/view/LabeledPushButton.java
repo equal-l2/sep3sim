@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class LabeledPushButton extends JPanel {
 	JButton b;
 	JLabel  l;
-	static final String onFile  = "sep3/view/pushbutton2.png";			// on時のリソース
+	static final String onFile  = "pushbutton2.png";			// on時のリソース
 	//static final String offFile = "sep3/view/PushButton2.png";		// off時のリソース
 
 	public JButton getButton() { return b; }

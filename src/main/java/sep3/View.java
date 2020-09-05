@@ -34,6 +34,7 @@ public class View extends JFrame {
 	private ToggleSwitch		dispSW, stopSW;
 	private DataInputSwitch		inSW;
 	private LabeledPushButton	startButton, resetButton, ackButton;
+	private JMenuItem dump;
 
 	// 各種 getter
 	public JMenuItem		getFileMenu()			{ return fmFile; }
@@ -57,6 +58,7 @@ public class View extends JFrame {
 	public JButton			getStartButton()		{ return startButton.getButton(); }
 	public JButton			getResetButton()		{ return resetButton.getButton(); }
 	public JButton			getAckButton()			{ return ackButton.getButton(); }
+	public JMenuItem getDump() { return dump; }
 
 	public View() {
 		setLayout(new BorderLayout());
@@ -77,6 +79,10 @@ public class View extends JFrame {
 			mmClock = new JMenuItem("Clock Step"); mmClock.setMnemonic('C');
 			mm.add(mmClock);
 		menu.add(mm);
+			JMenu util = new JMenu("Util");
+			dump = new JMenuItem("Dump");
+			util.add(dump);
+		menu.add(util);
 		add("North", menu);
 
 		// 左パネルの最上部に電源スイッチ

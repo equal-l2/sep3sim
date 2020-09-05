@@ -77,6 +77,17 @@ public class Memory {
 	}
 	public void powerOff() { reset(); }
 
+	public void dump() {
+		final int WIDTH = 8;
+		for (int i = 0; i < 0x200; i+=WIDTH) {
+			System.out.printf("0x%04x: ", i);
+			for (int j = 0; j < WIDTH; j++) {
+				System.out.printf("%04x ", mem[i+j]);
+			}
+			System.out.println();
+		}
+	}
+
 	// メモリを直接書き換えたいときに使う（binファイルのロード時）
 	public void setValue(int addr, int value) { mem[addr] = value; }
 }
