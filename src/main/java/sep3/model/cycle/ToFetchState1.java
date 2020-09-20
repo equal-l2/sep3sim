@@ -7,7 +7,7 @@ import sep3.model.operation.*;
 public class ToFetchState1 extends State {
 	@Override
 	public State clockstep(Model model) {
-		System.out.println("%% TF1 %%");
+		//System.out.println("%% TF1 %%");
 		// ステータスカウンタの設定。次の２行は、すべての状態において、最初に必ず記述すること
 		CPU cpu = model.getCPU();
 		cpu.getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_TF1);

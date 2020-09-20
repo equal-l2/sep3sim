@@ -9,7 +9,7 @@ public class HaltState extends State {
 
 	@Override
 	public State clockstep(Model model) {
-		System.out.println("%% HLT %%");
+		//System.out.println("%% HLT %%");
 		model.getCPU().getRegister(CPU.REG_SC).setInitValue(StateFactory.SC_HLT);
 		return this;
 	}

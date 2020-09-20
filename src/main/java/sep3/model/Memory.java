@@ -58,7 +58,7 @@ public class Memory {
 		reset();
 		// IPL の仕事をする
 		try {
-			final String iplFile = "sep3/misc/pro.bin";
+			final String iplFile = "pro.bin";
 			FileIO fio = new FileIO(this);
 //			url = getClass().getClassLoader().getResource(iplFile);
 //			InputStream in = (InputStream) url.getContent();
