@@ -9,9 +9,9 @@ public class RunModeFactory extends Factory<Integer, RunMode> {
 	public static final int RM_INST = 2;    // 命令ステップ走行モード
 
 	public RunModeFactory() {
-		makeItem(new Integer(RM_NORMAL), new NormalMode());
-		makeItem(new Integer(RM_CLOCK), new ClockStepMode());
-		makeItem(new Integer(RM_INST), new InstructionStepMode());
+		makeItem(RM_NORMAL, new NormalMode());
+		makeItem(RM_CLOCK, new ClockStepMode());
+		makeItem(RM_INST, new InstructionStepMode());
 	}
 
 	public RunMode getRunMode(int key) {

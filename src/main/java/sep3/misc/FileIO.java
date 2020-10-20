@@ -19,7 +19,7 @@ public class FileIO {
 			loadBody(br);
 			br.close();
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -29,7 +29,7 @@ public class FileIO {
 			loadBody(br);
 			br.close();
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 

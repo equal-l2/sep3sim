@@ -16,17 +16,17 @@ public class StateFactory extends Factory<Integer, State> {
 	public static final int SC_ILL = 0x8001;
 
 	public StateFactory() {
-		makeItem(new Integer(SC_IF0), new InstFetchState0());
-		makeItem(new Integer(SC_IF1), new InstFetchState1());
-		makeItem(new Integer(SC_FF0), new FromFetchState0());
-		makeItem(new Integer(SC_FF1), new FromFetchState1());
-		makeItem(new Integer(SC_FF2), new FromFetchState2());
-		makeItem(new Integer(SC_TF0), new ToFetchState0());
-		makeItem(new Integer(SC_TF1), new ToFetchState1());
-		makeItem(new Integer(SC_EX0), new ExecState0());
-		makeItem(new Integer(SC_EX1), new ExecState1());
-		makeItem(new Integer(SC_HLT), new HaltState());
-		makeItem(new Integer(SC_ILL), new IllState());
+		makeItem(SC_IF0, new InstFetchState0());
+		makeItem(SC_IF1, new InstFetchState1());
+		makeItem(SC_FF0, new FromFetchState0());
+		makeItem(SC_FF1, new FromFetchState1());
+		makeItem(SC_FF2, new FromFetchState2());
+		makeItem(SC_TF0, new ToFetchState0());
+		makeItem(SC_TF1, new ToFetchState1());
+		makeItem(SC_EX0, new ExecState0());
+		makeItem(SC_EX1, new ExecState1());
+		makeItem(SC_HLT, new HaltState());
+		makeItem(SC_ILL, new IllState());
 	}
 
 	public State getState(Integer key) {

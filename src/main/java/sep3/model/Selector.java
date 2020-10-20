@@ -16,8 +16,8 @@ public class Selector {
 	public Selector(Bus in, Bus out) {
 		inBus = in;
 		outBus = out;
-		if (in != null) fromConnected = new LinkedList<Integer>();
-		if (out != null) toConnected = new LinkedList<Integer>();
+		if (in != null) fromConnected = new LinkedList<>();
+		if (out != null) toConnected = new LinkedList<>();
 	}
 
 	public Selector(CPU c, Bus in, Bus out) {
@@ -31,12 +31,12 @@ public class Selector {
 
 	// 入力側ゲート集合に、新たなゲートを追加
 	public void addFrom(int r) {
-		fromConnected.add(new Integer(r));
+		fromConnected.add(r);
 	}
 
 	// 出力側ゲート集合に、新たなゲートを追加
 	public void addTo(int r) {
-		toConnected.add(new Integer(r));
+		toConnected.add(r);
 	}
 
 	// 入力側ゲート集合のすべてを閉じる（つまり、バスには値0を流しているのと同じ状態になる）
@@ -46,9 +46,7 @@ public class Selector {
 
 	// 入力側ゲート集合のうち、レジスタrひとつだけを選択してバスへデータを流す
 	public void selectFrom(int r) {
-		Iterator<Integer> i = fromConnected.listIterator();
-		while (i.hasNext()) {
-			int p = i.next().intValue();
+		for (int p : fromConnected) {
 			if (p == r) {
 				inBus.setValue(cpu.getRegister(r).getValue());
 			}
@@ -61,9 +59,7 @@ public class Selector {
 
 	// 出力側ゲート集合のうち、ひとつゲートを開いてデータを渡す
 	public void selectTo(int r) {
-		Iterator<Integer> i = toConnected.listIterator();
-		while (i.hasNext()) {
-			int p = i.next().intValue();
+		for (int p : toConnected) {
 			if (p == r) {
 				cpu.getRegister(r).setValue(outBus.getValue());
 			}
@@ -72,9 +68,7 @@ public class Selector {
 
 	// 出力側ゲート集合のうち、ふたつゲートを開いてデータを渡す
 	public void selectTo(int r1, int r2) {
-		Iterator<Integer> i = toConnected.listIterator();
-		while (i.hasNext()) {
-			int p = i.next().intValue();
+		for (int p : toConnected) {
 			if (p == r1) {
 				cpu.getRegister(r1).setValue(outBus.getValue());
 			}
@@ -86,9 +80,7 @@ public class Selector {
 
 	// 出力側ゲート集合のうち、みっつゲートを開いてデータを渡す
 	public void selectTo(int r1, int r2, int r3) {
-		Iterator<Integer> i = toConnected.listIterator();
-		while (i.hasNext()) {
-			int p = i.next().intValue();
+		for (int p : toConnected) {
 			if (p == r1) {
 				cpu.getRegister(r1).setValue(outBus.getValue());
 			}

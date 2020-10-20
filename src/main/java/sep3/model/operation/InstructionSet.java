@@ -47,45 +47,45 @@ public class InstructionSet extends Factory<Integer, Operation> {
 	private final Operation illop;
 
 	public InstructionSet(CPU cpu) {
-		makeItem(new Integer(OP_HLT), new HltOperation(cpu));
-		makeItem(new Integer(OP_CLR), new ClrOperation(cpu));
-		makeItem(new Integer(OP_ASL), new AslOperation(cpu));
-		makeItem(new Integer(OP_ASR), new AsrOperation(cpu));
-		makeItem(new Integer(OP_LSL), new LslOperation(cpu));
-		makeItem(new Integer(OP_LSR), new LsrOperation(cpu));
-		makeItem(new Integer(OP_ROL), new RolOperation(cpu));
-		makeItem(new Integer(OP_ROR), new RorOperation(cpu));
-		makeItem(new Integer(OP_MOV), new MovOperation(cpu));
-		makeItem(new Integer(OP_JMP), new JmpOperation(cpu));
-		makeItem(new Integer(OP_RET), new RetOperation(cpu));
-		makeItem(new Integer(OP_RIT), new RitOperation(cpu));
-		makeItem(new Integer(OP_ADD), new AddOperation(cpu));
-		makeItem(new Integer(OP_RJP), new RjpOperation(cpu));
-		makeItem(new Integer(OP_SUB), new SubOperation(cpu));
-		makeItem(new Integer(OP_CMP), new CmpOperation(cpu));
-		makeItem(new Integer(OP_NOP), new NopOperation(cpu));
-		makeItem(new Integer(OP_OR), new OrOperation(cpu));
-		makeItem(new Integer(OP_XOR), new XorOperation(cpu));
-		makeItem(new Integer(OP_AND), new AndOperation(cpu));
-		makeItem(new Integer(OP_BIT), new BitOperation(cpu));
-		makeItem(new Integer(OP_JSR), new JsrOperation(cpu));
-		makeItem(new Integer(OP_RJS), new RjsOperation(cpu));
-		makeItem(new Integer(OP_SVC), new SvcOperation(cpu));
-		makeItem(new Integer(OP_BRN), new BrnOperation(cpu));
-		makeItem(new Integer(OP_BRZ), new BrzOperation(cpu));
-		makeItem(new Integer(OP_BRV), new BrvOperation(cpu));
-		makeItem(new Integer(OP_BRC), new BrcOperation(cpu));
-		makeItem(new Integer(OP_RBN), new RbnOperation(cpu));
-		makeItem(new Integer(OP_RBZ), new RbzOperation(cpu));
-		makeItem(new Integer(OP_RBV), new RbvOperation(cpu));
-		makeItem(new Integer(OP_RBC), new RbcOperation(cpu));
-		makeItem(new Integer(OP_INC), new IncOperation(cpu));
-		makeItem(new Integer(OP_DEC), new DecOperation(cpu));
-		makeItem(new Integer(OP_THRA), new ThraOperation(cpu));
-		makeItem(new Integer(OP_THRB), new ThrbOperation(cpu));
-		makeItem(new Integer(OP_ADD2), new Add2Operation(cpu));
+		makeItem(OP_HLT, new HltOperation(cpu));
+		makeItem(OP_CLR, new ClrOperation(cpu));
+		makeItem(OP_ASL, new AslOperation(cpu));
+		makeItem(OP_ASR, new AsrOperation(cpu));
+		makeItem(OP_LSL, new LslOperation(cpu));
+		makeItem(OP_LSR, new LsrOperation(cpu));
+		makeItem(OP_ROL, new RolOperation(cpu));
+		makeItem(OP_ROR, new RorOperation(cpu));
+		makeItem(OP_MOV, new MovOperation(cpu));
+		makeItem(OP_JMP, new JmpOperation(cpu));
+		makeItem(OP_RET, new RetOperation(cpu));
+		makeItem(OP_RIT, new RitOperation(cpu));
+		makeItem(OP_ADD, new AddOperation(cpu));
+		makeItem(OP_RJP, new RjpOperation(cpu));
+		makeItem(OP_SUB, new SubOperation(cpu));
+		makeItem(OP_CMP, new CmpOperation(cpu));
+		makeItem(OP_NOP, new NopOperation(cpu));
+		makeItem(OP_OR, new OrOperation(cpu));
+		makeItem(OP_XOR, new XorOperation(cpu));
+		makeItem(OP_AND, new AndOperation(cpu));
+		makeItem(OP_BIT, new BitOperation(cpu));
+		makeItem(OP_JSR, new JsrOperation(cpu));
+		makeItem(OP_RJS, new RjsOperation(cpu));
+		makeItem(OP_SVC, new SvcOperation(cpu));
+		makeItem(OP_BRN, new BrnOperation(cpu));
+		makeItem(OP_BRZ, new BrzOperation(cpu));
+		makeItem(OP_BRV, new BrvOperation(cpu));
+		makeItem(OP_BRC, new BrcOperation(cpu));
+		makeItem(OP_RBN, new RbnOperation(cpu));
+		makeItem(OP_RBZ, new RbzOperation(cpu));
+		makeItem(OP_RBV, new RbvOperation(cpu));
+		makeItem(OP_RBC, new RbcOperation(cpu));
+		makeItem(OP_INC, new IncOperation(cpu));
+		makeItem(OP_DEC, new DecOperation(cpu));
+		makeItem(OP_THRA, new ThraOperation(cpu));
+		makeItem(OP_THRB, new ThrbOperation(cpu));
+		makeItem(OP_ADD2, new Add2Operation(cpu));
 		illop = new IllOperation(cpu);
-		makeItem(new Integer(OP_ILL), illop);
+		makeItem(OP_ILL, illop);
 	}
 
 	// 用意されている命令であるかどうかのチェック（不正命令のチェック）
@@ -101,7 +101,7 @@ public class InstructionSet extends Factory<Integer, Operation> {
 				v = null;
 				break;
 			default:
-				v = getItem(new Integer(opcode));
+				v = getItem(opcode);
 				break;
 		}
 		return v != null;
@@ -110,7 +110,7 @@ public class InstructionSet extends Factory<Integer, Operation> {
 	// 操作コードを指定して、命令クラスを取得する
 	public Operation getOperation(int opcode) {
 		Operation v;
-		v = getItem(new Integer(opcode));
+		v = getItem(opcode);
 		if (v == null) {
 			v = illop;
 		}

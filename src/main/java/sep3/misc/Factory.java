@@ -7,9 +7,7 @@ public class Factory<Key, Value> {
 	private HashMap<Key, Value> factory;
 
 	public Factory() {
-		if (factory == null) {
-			factory = new HashMap<Key, Value>();
-		}
+		factory = new HashMap<>();
 	}
 
 	public void makeItem(Key k, Value v) {

@@ -75,8 +75,8 @@ public class Model {
 
 	String stack2string(StackTraceElement[] sa) {
 		String msg = "";
-		for (int i = 0; i < sa.length; ++i) {
-			msg = msg + sa[i].toString() + "\n";
+		for (StackTraceElement ste: sa) {
+			msg = msg + ste.toString() + "\n";
 		}
 		return msg;
 	}
