@@ -1,9 +1,14 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class RitOperation extends Operation {
-	private CPU cpu;
-	RitOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	RitOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
 
 	public void operate() {
 		// TODO: 割り込み関係

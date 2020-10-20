@@ -1,8 +1,8 @@
 package sep3.view;
-import java.awt.Dimension;
-import java.net.URL;
 
 import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
 
 // LEDのひとつ分
 @SuppressWarnings("serial")
@@ -22,13 +22,18 @@ public class LED extends JLabel {
 			ImageIcon onIcon = new ImageIcon(url);
 			setIcon(onIcon);
 		}
-		setEnabled(false);	// 最初は消灯
+		setEnabled(false);    // 最初は消灯
 	}
 
 	public LED() {
-		this("LED2off.png", "LED2off.png");	// 点灯しない飾りのLED
+		this("LED2off.png", "LED2off.png");    // 点灯しない飾りのLED
 	}
 
-	public void on()  { setEnabled(true); }
-	public void off() { setEnabled(false); }
+	public void on() {
+		setEnabled(true);
+	}
+
+	public void off() {
+		setEnabled(false);
+	}
 }

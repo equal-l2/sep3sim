@@ -1,9 +1,15 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class AsrOperation extends Operation {
-	private CPU cpu;
-	AsrOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	AsrOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// C: シフト前のLSB
 

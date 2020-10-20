@@ -1,13 +1,14 @@
 package sep3.view;
-import java.awt.Dimension;
-import java.net.URL;
 
 import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
 
 // 押しボタン
 @SuppressWarnings("serial")
 public class PushButton extends JButton {
-	static final String onFile  = "sep3/view/pushbutton2.png";		// on時のリソース
+	static final String onFile = "sep3/view/pushbutton2.png";        // on時のリソース
+
 	//static final String offFile = "sep3/view/PushButton2.png";		// off時のリソース
 	public PushButton(String s) {
 		ImageIcon onIcon = null;

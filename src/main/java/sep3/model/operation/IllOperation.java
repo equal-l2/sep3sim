@@ -1,9 +1,15 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class IllOperation extends Operation {
-	private CPU cpu;
-	IllOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	IllOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// AバスもBバスも使わない
 		useABus(false);

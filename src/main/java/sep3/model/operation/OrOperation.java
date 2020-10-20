@@ -1,10 +1,16 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 import sep3.model.Register;
 
 public class OrOperation extends Operation {
-	private CPU cpu;
-	OrOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	OrOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// AバスにMDRの値を、BバスへB0の値を出力する
 		useABus(true);

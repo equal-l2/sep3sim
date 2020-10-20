@@ -1,9 +1,15 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class CmpOperation extends Operation {
-	private CPU cpu;
-	CmpOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	CmpOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// AバスにMDRの値を、BバスへB0の値を出力する
 		useABus(true);
@@ -21,7 +27,7 @@ public class CmpOperation extends Operation {
 
 		// PSWの更新
 		int p = psw_NZ(o & 0xFFFF);
-		boolean sameMSBin  = (i & 0x8000) == (j & 0x8000);
+		boolean sameMSBin = (i & 0x8000) == (j & 0x8000);
 		boolean sameMSBout = (i & 0x8000) == (o & 0x8000);
 		if (!sameMSBin && !sameMSBout) {
 			// FとTの符号が違い、かつTの符号と計算結果の符号が違うとき

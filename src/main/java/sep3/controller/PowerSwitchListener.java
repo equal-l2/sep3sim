@@ -1,20 +1,21 @@
 package sep3.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import sep3.Model;
 import sep3.View;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class PowerSwitchListener implements ActionListener {
-	private Model model;
-	private View  view;
+	private final Model model;
+	private final View view;
 
 	public PowerSwitchListener(Model m, View v) {
-		model = m; view = v;
+		model = m;
+		view = v;
 	}
 
-	public void actionPerformed(ActionEvent e){
+	public void actionPerformed(ActionEvent e) {
 		//System.out.println("enter actionlistner of PowerSwitch");
 		// ビュー上で電源スイッチが切り替わったとき、モデル上でも切り替える
 		model.getPowerSW().toggle();

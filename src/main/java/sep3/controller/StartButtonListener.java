@@ -1,19 +1,22 @@
 package sep3.controller;
 
+import sep3.Model;
+import sep3.View;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import sep3.*;
 
 public class StartButtonListener implements ActionListener {
-	private Model model;
+	private final Model model;
 	@SuppressWarnings("unused")
-	private View  view;
+	private final View view;
 
 	public StartButtonListener(Model m, View v) {
-		model = m; view = v;
+		model = m;
+		view = v;
 	}
 
-	public void actionPerformed(ActionEvent e){
+	public void actionPerformed(ActionEvent e) {
 		//System.out.println("enter actionlistener of start button");
 		if (!model.getMemory().getAckLamp().isOn()) model.run();
 	}

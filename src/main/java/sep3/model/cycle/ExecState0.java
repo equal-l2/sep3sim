@@ -1,7 +1,8 @@
 package sep3.model.cycle;
 
-import sep3.*;
-import sep3.model.*;
+import sep3.Model;
+import sep3.model.CPU;
+import sep3.model.Decoder;
 import sep3.model.operation.InstructionSet;
 
 public class ExecState0 extends State {
@@ -24,8 +25,7 @@ public class ExecState0 extends State {
 			next = StateFactory.SC_HLT;
 		} else if (!cpu.getInstructionSet().isLegalInstruction(op)) {
 			next = StateFactory.SC_ILL;
-		}
-		else if (cpu.getDecoder().getToMode() == Decoder.MODE_D) {
+		} else if (cpu.getDecoder().getToMode() == Decoder.MODE_D) {
 			next = StateFactory.SC_IF0;
 		} else {
 			next = StateFactory.SC_EX1;

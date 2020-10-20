@@ -1,7 +1,8 @@
 package sep3.model.cycle;
 
-import sep3.*;
-import sep3.model.*;
+import sep3.Model;
+import sep3.model.CPU;
+import sep3.model.Memory;
 import sep3.model.operation.InstructionSet;
 
 public class ExecState1 extends State {

@@ -1,9 +1,15 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class LsrOperation extends Operation {
-	private CPU cpu;
-	LsrOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	LsrOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// C: 入力のLSB
 

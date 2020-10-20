@@ -1,9 +1,15 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class BitOperation extends Operation {
-	private CPU cpu;
-	BitOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	BitOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// AバスにMDRの値を、BバスへB0の値を出力する
 		useABus(true);

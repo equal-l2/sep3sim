@@ -11,6 +11,12 @@ public class Factory<Key, Value> {
 			factory = new HashMap<Key, Value>();
 		}
 	}
-	public void makeItem(Key k, Value v) { factory.put(k, v); }
-	public Value getItem(Key k)          { return factory.get(k); }
+
+	public void makeItem(Key k, Value v) {
+		factory.put(k, v);
+	}
+
+	public Value getItem(Key k) {
+		return factory.get(k);
+	}
 }

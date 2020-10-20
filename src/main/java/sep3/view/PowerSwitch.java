@@ -1,14 +1,15 @@
 package sep3.view;
-import java.awt.Dimension;
-import java.net.URL;
 
 import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
 
 // 電源スイッチ
 @SuppressWarnings("serial")
 public class PowerSwitch extends JButton {
-	private URL url;
-	static final String onFile  = "powerbutton2.png";	// 電源on時のリソース
+	static final String onFile = "powerbutton2.png";    // 電源on時のリソース
+	private final URL url;
+
 	//static final String offFile = "sep3/view/poweroff.png";	// 電源off時のリソース
 	public PowerSwitch() {
 		ImageIcon onIcon = null;

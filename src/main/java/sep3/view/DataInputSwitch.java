@@ -1,11 +1,12 @@
 package sep3.view;
-import java.awt.*;
+
 import javax.swing.*;
+import java.awt.*;
 
 // データ入力用トグルスイッチ（16個）
 @SuppressWarnings("serial")
 public class DataInputSwitch extends JPanel {
-	private ToggleSwitch[] dataSwitch;
+	private final ToggleSwitch[] dataSwitch;
 
 	public DataInputSwitch() {
 		// 4つ毎に小スペースを入れて区切って表示したいので、こういうプログラムにしている
@@ -17,12 +18,13 @@ public class DataInputSwitch extends JPanel {
 			panel[i] = new JPanel();
 			panel[i].setLayout(new GridLayout(1, 4));
 			for (int j = 0; j < 4; ++j) {
-				dataSwitch[i*4+j] = new ToggleSwitch();
-				panel[i].add(dataSwitch[i*4+j]);
+				dataSwitch[i * 4 + j] = new ToggleSwitch();
+				panel[i].add(dataSwitch[i * 4 + j]);
 			}
 			add(panel[i]);
 		}
 	}
+
 	// スイッチ状態を読み取って、16ビット数値データにして返す
 	public int getData() {
 		int v = 0;

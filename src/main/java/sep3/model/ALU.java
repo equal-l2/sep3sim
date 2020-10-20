@@ -1,18 +1,27 @@
 package sep3.model;
 
-import sep3.model.operation.*;
+import sep3.model.operation.InstructionSet;
+import sep3.model.operation.Operation;
 
 // SEP-3 の算術論理演算回路
 public class ALU {
 	@SuppressWarnings("unused")
-	private Bus aBus, bBus, sBus;
+	private final Bus aBus;
 	@SuppressWarnings("unused")
-	private Register psw;
-	private InstructionSet iset;
+	private final Bus bBus;
+	@SuppressWarnings("unused")
+	private final Bus sBus;
+	@SuppressWarnings("unused")
+	private final Register psw;
+	private final InstructionSet iset;
 
 	// ALUをnewするときは、Aバス、Bバス、Sバスと、PSWを指定する
 	ALU(Bus a, Bus b, Bus s, Register r, InstructionSet is) {
-		aBus = a; bBus = b; sBus = s; psw = r; iset = is;
+		aBus = a;
+		bBus = b;
+		sBus = s;
+		psw = r;
+		iset = is;
 	}
 
 	// ALUに動作指定opを与えて動かす

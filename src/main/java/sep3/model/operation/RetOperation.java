@@ -1,9 +1,14 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class RetOperation extends Operation {
-	private CPU cpu;
-	RetOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	RetOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
 
 	public void operate() {
 		// Aバスは使わず、B0の値をBバスへ出力する

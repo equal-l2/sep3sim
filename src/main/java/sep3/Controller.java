@@ -1,8 +1,8 @@
 package sep3;
 
 
-import sep3.model.*;
 import sep3.controller.*;
+import sep3.model.CPU;
 
 public class Controller {
 
@@ -15,7 +15,7 @@ public class Controller {
 		view.getClockMenu().addActionListener(new RunModeClockStepMenuListener(model, view));
 		view.getDump().addActionListener(new DumpListener(model, view));
 
-	// ビューの変更をモデルに伝える
+		/* ビューの変更をモデルに伝える */
 		// 電源スイッチ
 		view.getPowerSwitch().addActionListener(new PowerSwitchListener(model, view));
 
@@ -34,14 +34,14 @@ public class Controller {
 		// データ入力スイッチ
 		//   リスナーなし
 
-	// モデルの変更をビューに伝える
+		/* モデルの変更をビューに伝える */
 		// R0 から R6
-		final boolean dispSWon  = true;			// true:  表示切り替えスイッチがONのとき…を意味する
-		final boolean dispSWoff = false;		// false: 表示切り替えスイッチがOFFのとき…を意味する
+		final boolean dispSWon = true;            // true:  表示切り替えスイッチがONのとき…を意味する
+		final boolean dispSWoff = false;        // false: 表示切り替えスイッチがOFFのとき…を意味する
 
 		// 表示切替スイッチがOFFのときのLCD
 		// R0 - R6 と B0
-		model.getCPU().getRegister(CPU.REG_R0).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 0));	// 0, 0 はLCDの表示位置を表す
+		model.getCPU().getRegister(CPU.REG_R0).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 0));    // 0, 0 はLCDの表示位置を表す
 		model.getCPU().getRegister(CPU.REG_R1).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 1));
 		model.getCPU().getRegister(CPU.REG_R2).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 2));
 		model.getCPU().getRegister(CPU.REG_R3).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 3));
@@ -73,7 +73,7 @@ public class Controller {
 		// ILL LED
 		model.getCPU().getIllLamp().addObserver(new ILLLampObserver(model, view));
 
- 		// ACK LED
+		// ACK LED
 		model.getMemory().getAckLamp().addObserver(new AckLampObserver(model, view));
 
 		// 走行モード

@@ -31,6 +31,7 @@ public class Sep3Resources {
 		}
 		return url;
 	}
+
 	public File resource2file(String pos, String name) {
 		//File f;
 		//System.out.println("Check: " + name);
@@ -63,6 +64,7 @@ public class Sep3Resources {
 		}
 		return f;
 	}
+
 	public URI resource2uri(String pos, String name) throws URISyntaxException {
 		System.out.println("Check: " + name);
 		//URL url = getClass().getClassLoader().getResource(name);

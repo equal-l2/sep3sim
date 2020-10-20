@@ -1,23 +1,16 @@
 package sep3.view;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.net.URL;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
 
 // 押しボタン
 @SuppressWarnings("serial")
 public class LabeledPushButton extends JPanel {
+	static final String onFile = "pushbutton2.png";            // on時のリソース
 	JButton b;
-	JLabel  l;
-	static final String onFile  = "pushbutton2.png";			// on時のリソース
+	JLabel l;
 	//static final String offFile = "sep3/view/PushButton2.png";		// off時のリソース
-
-	public JButton getButton() { return b; }
 
 	// ラベル文字列labelをポイント数ptで、パネルのpos位置（"North", "West"など）に表示してあるボタンを作る
 	public LabeledPushButton(String label, int pt, String pos) {
@@ -48,8 +41,24 @@ public class LabeledPushButton extends JPanel {
 		//setSelected(true);			// off状態から始める
 
 	}
-	public LabeledPushButton(String label, String pos) { this(label,  20, pos); }	// デフォルトのptは20
-	public LabeledPushButton(String label) { this(label, 20, "South"); }			// デフォルトの位置は、ボタンの下
-	public LabeledPushButton(String label, int pt) { this(label, pt, "South"); }	// ptだけ変える
-	public LabeledPushButton() { this(""); }										// 何も書いてないときは、ラベル文字列なし
+
+	public LabeledPushButton(String label, String pos) {
+		this(label, 20, pos);
+	}    // デフォルトのptは20
+
+	public LabeledPushButton(String label) {
+		this(label, 20, "South");
+	}            // デフォルトの位置は、ボタンの下
+
+	public LabeledPushButton(String label, int pt) {
+		this(label, pt, "South");
+	}    // ptだけ変える
+
+	public LabeledPushButton() {
+		this("");
+	}                                        // 何も書いてないときは、ラベル文字列なし
+
+	public JButton getButton() {
+		return b;
+	}
 }

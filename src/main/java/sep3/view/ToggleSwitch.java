@@ -1,13 +1,15 @@
 package sep3.view;
+
+import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
-import javax.swing.*;
 
 // トグルスイッチ
 @SuppressWarnings("serial")
 public class ToggleSwitch extends JToggleButton {
-	static final String onFile  = "toggleon.png";		// on時のリソース
-	static final String offFile = "toggleoff.png";	// off時のリソース
+	static final String onFile = "toggleon.png";        // on時のリソース
+	static final String offFile = "toggleoff.png";    // off時のリソース
+
 	public ToggleSwitch() {
 		ImageIcon onIcon = null, offIcon = null;
 		URL url = this.getClass().getClassLoader().getResource(onFile);
@@ -21,6 +23,6 @@ public class ToggleSwitch extends JToggleButton {
 		}
 		setIcon(offIcon);
 		setPreferredSize(new Dimension(onIcon.getIconWidth(), onIcon.getIconHeight()));
-		setSelected(false);			// off状態から始める
+		setSelected(false);            // off状態から始める
 	}
 }

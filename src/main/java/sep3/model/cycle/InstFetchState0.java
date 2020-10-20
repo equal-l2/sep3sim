@@ -1,8 +1,8 @@
 package sep3.model.cycle;
 
-import sep3.*;
-import sep3.model.*;
-import sep3.model.operation.*;
+import sep3.Model;
+import sep3.model.CPU;
+import sep3.model.operation.InstructionSet;
 
 public class InstFetchState0 extends State {
 	@Override

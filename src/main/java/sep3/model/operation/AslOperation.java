@@ -1,9 +1,15 @@
 package sep3.model.operation;
+
 import sep3.model.CPU;
 
 public class AslOperation extends Operation {
-	private CPU cpu;
-	AslOperation(CPU cpu) { super(cpu); this.cpu = cpu; }
+	private final CPU cpu;
+
+	AslOperation(CPU cpu) {
+		super(cpu);
+		this.cpu = cpu;
+	}
+
 	public void operate() {
 		// V: シフト前のMSB != 後処理前のMSB
 		// C: 後処理前のMSB

@@ -1,8 +1,10 @@
 package sep3.model.cycle;
 
-import sep3.*;
-import sep3.model.*;
-import sep3.model.operation.*;
+import sep3.Model;
+import sep3.model.CPU;
+import sep3.model.Decoder;
+import sep3.model.Memory;
+import sep3.model.operation.InstructionSet;
 
 public class ToFetchState1 extends State {
 	@Override
@@ -18,7 +20,7 @@ public class ToFetchState1 extends State {
 		// MAR をアドレスバスに流す
 		model.getAddrBusSelector().selectFrom(CPU.REG_MAR);
 
-		switch(d.getOpCode()) {
+		switch (d.getOpCode()) {
 			case InstructionSet.OP_CLR:
 			case InstructionSet.OP_MOV:
 				// Aバスの値を使わず、かつMMIOをTオペランドとして取りうる命令(現時点ではMOVとCLRのみ)

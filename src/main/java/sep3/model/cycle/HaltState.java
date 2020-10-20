@@ -1,6 +1,6 @@
 package sep3.model.cycle;
 
-import sep3.*;
+import sep3.Model;
 import sep3.model.CPU;
 
 public class HaltState extends State {

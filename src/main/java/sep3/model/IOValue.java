@@ -6,9 +6,13 @@ import java.util.Observable;
 public class IOValue extends Observable {
 	private int value;
 
+	public int getValue() {
+		return value;
+	}
+
 	public void setValue(int v) {
 		value = v;
-		setChanged(); notifyObservers(); // 出力すべきものが来たので、ビューに知らせて表示してもらう
+		setChanged();
+		notifyObservers(); // 出力すべきものが来たので、ビューに知らせて表示してもらう
 	}
-	public int  getValue() { return value; }
 }

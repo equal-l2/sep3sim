@@ -1,20 +1,25 @@
 package sep3.controller;
 
+import sep3.Model;
+import sep3.View;
+import sep3.model.Bus;
+
 import java.util.Observable;
 import java.util.Observer;
 
-import sep3.*;
-import sep3.model.*;
-
 public class BusObserver implements Observer {
-	private Model model;
-	private View  view;
-	private boolean when;
-	private int row;		// LCDの表示位置（行）
-	private int col;		// LCDの表示位置（列）
+	private final Model model;
+	private final View view;
+	private final boolean when;
+	private final int row;        // LCDの表示位置（行）
+	private final int col;        // LCDの表示位置（列）
 
 	public BusObserver(Model m, View v, boolean w, int r, int c) {
-		model = m; view = v; when = w; row = r; col = c;
+		model = m;
+		view = v;
+		when = w;
+		row = r;
+		col = c;
 	}
 
 	public void update(Observable o, Object arg) {

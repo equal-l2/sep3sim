@@ -1,21 +1,22 @@
 package sep3.controller;
 
+import sep3.Model;
+import sep3.View;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import sep3.*;
-import sep3.model.CPU;
-import sep3.model.OnOffFlag;
 
 public class DumpListener implements ActionListener {
-	private Model model;
-	private View  view;
+	private final Model model;
+	private final View view;
 
 	public DumpListener(Model m, View v) {
-		model = m; view = v;
+		model = m;
+		view = v;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e){
+	public void actionPerformed(ActionEvent e) {
 		model.getMemory().dump();
 	}
 }
