@@ -6,7 +6,7 @@ import sep3.model.CPU;
 
 public class Controller {
 
-	public Controller(Model model, View view) {
+	public Controller(Model model, View view, DebugView debug) {
 		// メニューの処理
 		view.getFileMenu().addActionListener(new FileMenuListener(model, view));
 		view.getExitMenu().addActionListener(new ExitMenuListener(model, view));
@@ -17,7 +17,7 @@ public class Controller {
 
 		/* ビューの変更をモデルに伝える */
 		// 電源スイッチ
-		view.getPowerSwitch().addActionListener(new PowerSwitchListener(model, view));
+		view.getPowerSwitch().addActionListener(new PowerSwitchListener(model, view, debug));
 
 		// トグルスイッチ： PC/ISR切り替え
 		view.getDispSW().addActionListener(new DispSwitchListener(model, view));
@@ -78,5 +78,8 @@ public class Controller {
 
 		// 走行モード
 		model.getListenableRunMode().addListener(new RunModeListener(model, view));
+
+		/* DebugView用 */
+		model.getMemory().addListener(new MemoryListener(model, debug));
 	}
 }

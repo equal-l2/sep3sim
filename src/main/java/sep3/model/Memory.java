@@ -2,6 +2,8 @@ package sep3.model;
 
 import sep3.misc.FileIO;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.InputStream;
 
 // SEP-3 主記憶
@@ -14,6 +16,8 @@ public class Memory {
 	private final int[] mem = new int[0x10000];    // 記憶する場所
 	private final IOValue ioValue;                // メモリマップトI/Oで出力した値を置く（ビューへの通知のため）
 	private final OnOffFlag ackLamp;                // メモリマップトI/Oで入力要求があったことをビューへ通知するフラグ
+
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	// CPUとのインタフェースである、アドレスバス、データバスを受け取る
 	public Memory(Bus aBus, Bus dBus) {
@@ -44,7 +48,7 @@ public class Memory {
 			if (addr == 0xFFE0) {        // 出力のとき
 				ioValue.setValue(dataBus.getValue());
 			} else {
-				mem[addr] = dataBus.getValue();
+				setValue(addr, dataBus.getValue());
 			}
 		}
 	}
@@ -64,6 +68,7 @@ public class Memory {
 		for (int i = 0; i < mem.length; ++i) {
 			mem[i] = 0;
 		}
+		pcs.firePropertyChange(null, null, null);
 		reset();
 		// IPL の仕事をする
 		try {
@@ -104,5 +109,15 @@ public class Memory {
 	// メモリを直接書き換えたいときに使う（binファイルのロード時）
 	public void setValue(int addr, int value) {
 		mem[addr] = value;
+		pcs.fireIndexedPropertyChange(null, addr, null, null);
+	}
+
+	// DebugView用
+	public int getValue(int addr) {
+		return mem[addr];
+	}
+
+	public void addListener(PropertyChangeListener l) {
+		pcs.addPropertyChangeListener(l);
 	}
 }

@@ -1,5 +1,6 @@
 package sep3.controller;
 
+import sep3.DebugView;
 import sep3.Model;
 import sep3.View;
 
@@ -9,10 +10,12 @@ import java.awt.event.ActionListener;
 public class PowerSwitchListener implements ActionListener {
 	private final Model model;
 	private final View view;
+	private final DebugView debug;
 
-	public PowerSwitchListener(Model m, View v) {
+	public PowerSwitchListener(Model m, View v, DebugView d) {
 		model = m;
 		view = v;
+		debug = d;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -31,6 +34,7 @@ public class PowerSwitchListener implements ActionListener {
 			model.powerOff();
 			view.getR7ISR().powerOff();
 			view.getLCD().powerOff();
+			debug.powerOff();
 		}
 	}
 }
