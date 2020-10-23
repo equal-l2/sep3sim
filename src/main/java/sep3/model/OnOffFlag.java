@@ -1,31 +1,38 @@
 package sep3.model;
 
-import java.util.Observable;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 // モデル上のHLT, ILL状態をビューに通知するための変数
-public class OnOffFlag extends Observable {
+public class OnOffFlag {
 	private boolean on = false;   // 起動時はoff
+	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	// フラグの変更をビューに通知する
 	public void toggle() {
-		on = !on;
-		setChanged();
-		notifyObservers();
+		setFlag(!on);
 	}
 
 	public void on() {
-		on = true;
-		setChanged();
-		notifyObservers();
+		setFlag(true);
 	}
 
 	public void off() {
-		on = false;
-		setChanged();
-		notifyObservers();
+		setFlag(false);
+	}
+
+	private void setFlag(boolean to) {
+		var old = on;
+		on = to;
+
+		// フラグの変更をビューに通知する
+		pcs.firePropertyChange(null,null,null);
 	}
 
 	public boolean isOn() {
 		return on;
+	}
+
+	public void addListener(PropertyChangeListener l) {
+		pcs.addPropertyChangeListener(l);
 	}
 }

@@ -3,20 +3,22 @@ package sep3.controller;
 import sep3.Model;
 import sep3.View;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Observable;
 import java.util.Observer;
 
-public class AckLampObserver implements Observer {
+public class AckLampListener implements PropertyChangeListener {
 	private final Model model;
 	private final View view;
 
-	public AckLampObserver(Model m, View v) {
+	public AckLampListener(Model m, View v) {
 		model = m;
 		view = v;
 	}
 
-	public void update(Observable o, Object arg) {
-		//System.out.println("enter Observer of Ack lamp");
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
 		// モデル上のランプ状態を、そのままビューに伝える
 		if (model.getMemory().getAckLamp().isOn()) {
 			view.getAckLED().on();

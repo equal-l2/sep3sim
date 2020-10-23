@@ -41,42 +41,42 @@ public class Controller {
 
 		// 表示切替スイッチがOFFのときのLCD
 		// R0 - R6 と B0
-		model.getCPU().getRegister(CPU.REG_R0).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 0));    // 0, 0 はLCDの表示位置を表す
-		model.getCPU().getRegister(CPU.REG_R1).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 1));
-		model.getCPU().getRegister(CPU.REG_R2).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 2));
-		model.getCPU().getRegister(CPU.REG_R3).addObserver(new RegisterObserver(model, view, dispSWoff, 0, 3));
-		model.getCPU().getRegister(CPU.REG_R4).addObserver(new RegisterObserver(model, view, dispSWoff, 1, 0));
-		model.getCPU().getRegister(CPU.REG_R5).addObserver(new RegisterObserver(model, view, dispSWoff, 1, 1));
-		model.getCPU().getRegister(CPU.REG_R6).addObserver(new RegisterObserver(model, view, dispSWoff, 1, 2));
-		model.getCPU().getRegister(CPU.REG_B0).addObserver(new RegisterObserver(model, view, dispSWoff, 1, 3));
+		model.getCPU().getRegister(CPU.REG_R0).addListener(new RegisterListener(model, view, dispSWoff, 0, 0));    // 0, 0 はLCDの表示位置を表す
+		model.getCPU().getRegister(CPU.REG_R1).addListener(new RegisterListener(model, view, dispSWoff, 0, 1));
+		model.getCPU().getRegister(CPU.REG_R2).addListener(new RegisterListener(model, view, dispSWoff, 0, 2));
+		model.getCPU().getRegister(CPU.REG_R3).addListener(new RegisterListener(model, view, dispSWoff, 0, 3));
+		model.getCPU().getRegister(CPU.REG_R4).addListener(new RegisterListener(model, view, dispSWoff, 1, 0));
+		model.getCPU().getRegister(CPU.REG_R5).addListener(new RegisterListener(model, view, dispSWoff, 1, 1));
+		model.getCPU().getRegister(CPU.REG_R6).addListener(new RegisterListener(model, view, dispSWoff, 1, 2));
+		model.getCPU().getRegister(CPU.REG_B0).addListener(new RegisterListener(model, view, dispSWoff, 1, 3));
 		// 表示切替スイッチがONのときのLCD
 		// MAR, MDR, Mbus（データバス）, Dummy, Abus, Bbus, Sbus, SC
-		model.getCPU().getRegister(CPU.REG_MAR).addObserver(new RegisterObserver(model, view, dispSWon, 0, 0));
-		model.getCPU().getRegister(CPU.REG_MDR).addObserver(new RegisterObserver(model, view, dispSWon, 0, 1));
-		model.getDataBus().addObserver(new BusObserver(model, view, dispSWon, 0, 2));
-		model.getCPU().getRegister(CPU.REG_DUMMY).addObserver(new RegisterObserver(model, view, dispSWon, 0, 3));
-		model.getCPU().getABus().addObserver(new BusObserver(model, view, dispSWon, 1, 0));
-		model.getCPU().getBBus().addObserver(new BusObserver(model, view, dispSWon, 1, 1));
-		model.getCPU().getSBus().addObserver(new BusObserver(model, view, dispSWon, 1, 2));
-		model.getCPU().getRegister(CPU.REG_SC).addObserver(new RegisterObserver(model, view, dispSWon, 1, 3));
+		model.getCPU().getRegister(CPU.REG_MAR).addListener(new RegisterListener(model, view, dispSWon, 0, 0));
+		model.getCPU().getRegister(CPU.REG_MDR).addListener(new RegisterListener(model, view, dispSWon, 0, 1));
+		model.getDataBus().addListener(new BusListener(model, view, dispSWon, 0, 2));
+		model.getCPU().getRegister(CPU.REG_DUMMY).addListener(new RegisterListener(model, view, dispSWon, 0, 3));
+		model.getCPU().getABus().addListener(new BusListener(model, view, dispSWon, 1, 0));
+		model.getCPU().getBBus().addListener(new BusListener(model, view, dispSWon, 1, 1));
+		model.getCPU().getSBus().addListener(new BusListener(model, view, dispSWon, 1, 2));
+		model.getCPU().getRegister(CPU.REG_SC).addListener(new RegisterListener(model, view, dispSWon, 1, 3));
 
 		// R7/ISR
-		model.getCPU().getRegister(CPU.REG_R7).addObserver(new R7ISRObserver(model, view, dispSWoff));
-		model.getCPU().getRegister(CPU.REG_ISR).addObserver(new R7ISRObserver(model, view, dispSWon));
+		model.getCPU().getRegister(CPU.REG_R7).addListener(new R7ISRListener(model, view, dispSWoff));
+		model.getCPU().getRegister(CPU.REG_ISR).addListener(new R7ISRListener(model, view, dispSWon));
 
 		// データ出力LED
-		model.getMemory().getIOValue().addObserver(new IOOutputObserver(model, view));
+		model.getMemory().getIOValue().addListener(new IOOutputListener(model, view));
 
 		// HLT LED
-		model.getCPU().getHaltLamp().addObserver(new HLTLampObserver(model, view));
+		model.getCPU().getHaltLamp().addListener(new HLTLampListener(model, view));
 
 		// ILL LED
-		model.getCPU().getIllLamp().addObserver(new ILLLampObserver(model, view));
+		model.getCPU().getIllLamp().addListener(new ILLLampListener(model, view));
 
 		// ACK LED
-		model.getMemory().getAckLamp().addObserver(new AckLampObserver(model, view));
+		model.getMemory().getAckLamp().addListener(new AckLampListener(model, view));
 
 		// 走行モード
-		model.getObservableRunMode().addObserver(new RunModeObserver(model, view));
+		model.getListenableRunMode().addListener(new RunModeListener(model, view));
 	}
 }

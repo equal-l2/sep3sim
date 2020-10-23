@@ -17,8 +17,7 @@ public class ISRegister extends Register {
 			super.clock();                            // ISRを更新して
 			decoder.decode(super.getValue());        // 命令が格納されたので、デコーダに渡す
 			//System.out.println("ISR="+String.format("%1$04x", (super.getValue() & 0xFFFF)).toUpperCase());
-			setChanged();
-			notifyObservers();
+			touch();
 		}
 	}
 }
