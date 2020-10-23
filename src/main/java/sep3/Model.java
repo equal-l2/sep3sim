@@ -1,7 +1,7 @@
 package sep3;
 
 import sep3.model.*;
-import sep3.model.runmode.ObservableRunMode;
+import sep3.model.runmode.ListenableRunMode;
 import sep3.model.runmode.RunMode;
 import sep3.model.runmode.RunModeFactory;
 
@@ -9,7 +9,7 @@ public class Model {
 	// 走行モードごとに仕事を生成
 	RunModeFactory rmf = new RunModeFactory();
 	// 現走行モードのコンテナ
-	ObservableRunMode currentRunMode = new ObservableRunMode();
+	ListenableRunMode currentRunMode = new ListenableRunMode();
 	// only for test
 	String msg;
 	private final Bus addrBus;
@@ -32,7 +32,7 @@ public class Model {
 		currentRunMode.setRunMode(rmf.getRunMode(RunModeFactory.RM_NORMAL));    // 最初に起動するときは、通常走行モード
 	}
 
-	public ObservableRunMode getObservableRunMode() {
+	public ListenableRunMode getListenableRunMode() {
 		return currentRunMode;
 	}
 

@@ -4,20 +4,22 @@ import sep3.Model;
 import sep3.View;
 import sep3.model.runmode.RunModeFactory;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Observable;
 import java.util.Observer;
 
-public class RunModeObserver implements Observer {
+public class RunModeListener implements PropertyChangeListener {
 	private final Model model;
 	private final View view;
 
-	public RunModeObserver(Model m, View v) {
+	public RunModeListener(Model m, View v) {
 		model = m;
 		view = v;
 	}
 
-	public void update(Observable o, Object arg) {
-		//System.out.println("enter Observer of RumMode");
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
 		// モデル上の走行状態を、ビュー上の走行モードランプに反映させる
 		if (model.getPowerSW().isOn()) {
 			switch (model.getRunMode().getID()) {
