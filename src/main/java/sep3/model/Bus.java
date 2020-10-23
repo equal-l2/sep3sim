@@ -37,7 +37,7 @@ public class Bus implements LCDDisplayable {
 	public void setValue(int v) {
 		var old = value;
 		value = v;
-		pcs.firePropertyChange("value", old, value);
+		pcs.firePropertyChange(null,null,null);
 	}
 
 	public Selector getSelector() {
@@ -50,7 +50,7 @@ public class Bus implements LCDDisplayable {
 
 	// 表示のため、モデルが更新されたかのように扱う
 	public void touch() {
-		pcs.firePropertyChange("value", value, value);
+		pcs.firePropertyChange(null,null,null);
 	}
 
 	public void addListener(PropertyChangeListener l) {

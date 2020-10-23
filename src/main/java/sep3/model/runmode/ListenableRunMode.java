@@ -16,7 +16,7 @@ public class ListenableRunMode {
 	public void setRunMode(RunMode m) {
 		var old = rm;
 		rm = m;
-		pcs.firePropertyChange("rm", old, rm);
+		pcs.firePropertyChange(null, null, null);
 	}
 
 	public void addListener(PropertyChangeListener l) {

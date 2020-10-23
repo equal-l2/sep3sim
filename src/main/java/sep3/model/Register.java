@@ -40,7 +40,7 @@ public class Register implements LCDDisplayable {
 
 	// 表示のため、モデルが更新されたかのように扱う
 	public void touch() {
-		pcs.firePropertyChange("value", value, value);
+		pcs.firePropertyChange(null, null, null);
 	}
 
 	// クロック投入

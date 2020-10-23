@@ -16,7 +16,7 @@ public class IOValue {
 		var old = value;
 		value = v;
 		// 出力すべきものが来たので、ビューに知らせて表示してもらう
-		pcs.firePropertyChange("value", old, value);
+		pcs.firePropertyChange(null,null,null);
 	}
 
 	public void addListener(PropertyChangeListener l) {

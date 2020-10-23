@@ -25,7 +25,7 @@ public class OnOffFlag {
 		on = to;
 
 		// フラグの変更をビューに通知する
-		pcs.firePropertyChange("on", old, on);
+		pcs.firePropertyChange(null,null,null);
 	}
 
 	public boolean isOn() {
