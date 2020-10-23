@@ -4,14 +4,13 @@ import sep3.controller.LCDDisplayable;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
 
 // SEP-3 のバス
 public class Bus implements LCDDisplayable {
 	public static final boolean NeedSelector = true;
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private int value;                            // このバスに現在流れている値
 	private Selector selector;                        // どのレジスタの値を選択的に流すか決める回路
-	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Bus(boolean in, boolean out) {
 		// このバスへデータを流すためのセレクタ（in）と、バスから渡すためのセレクタ（out）を登録する
@@ -37,7 +36,7 @@ public class Bus implements LCDDisplayable {
 	public void setValue(int v) {
 		var old = value;
 		value = v;
-		pcs.firePropertyChange(null,null,null);
+		pcs.firePropertyChange(null, null, null);
 	}
 
 	public Selector getSelector() {
@@ -50,7 +49,7 @@ public class Bus implements LCDDisplayable {
 
 	// 表示のため、モデルが更新されたかのように扱う
 	public void touch() {
-		pcs.firePropertyChange(null,null,null);
+		pcs.firePropertyChange(null, null, null);
 	}
 
 	public void addListener(PropertyChangeListener l) {

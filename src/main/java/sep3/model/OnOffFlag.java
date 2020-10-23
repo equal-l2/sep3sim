@@ -5,8 +5,8 @@ import java.beans.PropertyChangeSupport;
 
 // モデル上のHLT, ILL状態をビューに通知するための変数
 public class OnOffFlag {
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private boolean on = false;   // 起動時はoff
-	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public void toggle() {
 		setFlag(!on);
@@ -25,7 +25,7 @@ public class OnOffFlag {
 		on = to;
 
 		// フラグの変更をビューに通知する
-		pcs.firePropertyChange(null,null,null);
+		pcs.firePropertyChange(null, null, null);
 	}
 
 	public boolean isOn() {

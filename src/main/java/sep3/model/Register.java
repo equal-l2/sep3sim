@@ -4,13 +4,12 @@ import sep3.controller.LCDDisplayable;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
 
 // SEP-3 レジスタ
 public class Register implements LCDDisplayable {
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private int value;                // 現在このレジスタが記憶している値
 	private int preValue;            // ゲートを越えて到着したデータ（次のclock()でvalueを書き換える
-	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	Register() {
 		value = 0;

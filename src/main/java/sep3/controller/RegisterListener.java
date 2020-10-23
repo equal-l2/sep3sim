@@ -6,8 +6,6 @@ import sep3.model.Register;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
-import java.util.Observer;
 
 public class RegisterListener implements PropertyChangeListener {
 	private final Model model;

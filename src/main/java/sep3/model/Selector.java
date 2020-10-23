@@ -1,16 +1,15 @@
 package sep3.model;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 // バスの入力口、出力口に設置されているゲートのどれを選択して、バスへ／からデータを取得するか決める
 // ための制御回路（セレクタと呼ぶ）
 public class Selector {
-	// 選択対象レジスタ管理用
-	private LinkedList<Integer> toConnected, fromConnected;
 	// 接続バス
 	private final Bus outBus;
 	private final Bus inBus;
+	// 選択対象レジスタ管理用
+	private LinkedList<Integer> toConnected, fromConnected;
 	private CPU cpu;
 
 	public Selector(Bus in, Bus out) {

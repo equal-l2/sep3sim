@@ -6,8 +6,6 @@ import sep3.model.Bus;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
-import java.util.Observer;
 
 public class BusListener implements PropertyChangeListener {
 	private final Model model;

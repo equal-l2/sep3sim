@@ -6,8 +6,6 @@ import sep3.model.runmode.RunModeFactory;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
-import java.util.Observer;
 
 public class RunModeListener implements PropertyChangeListener {
 	private final Model model;

@@ -5,8 +5,8 @@ import java.beans.PropertyChangeSupport;
 
 // メモリマップトI/OでLEDに出力したい場合、その事実をモデルからビューに伝えるための変数
 public class IOValue {
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private int value;
-	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public int getValue() {
 		return value;
@@ -16,7 +16,7 @@ public class IOValue {
 		var old = value;
 		value = v;
 		// 出力すべきものが来たので、ビューに知らせて表示してもらう
-		pcs.firePropertyChange(null,null,null);
+		pcs.firePropertyChange(null, null, null);
 	}
 
 	public void addListener(PropertyChangeListener l) {

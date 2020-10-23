@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 // 要素集合の登録と検索ができるようなもの
 public class Factory<Key, Value> {
-	private HashMap<Key, Value> factory;
+	private final HashMap<Key, Value> factory;
 
 	public Factory() {
 		factory = new HashMap<>();

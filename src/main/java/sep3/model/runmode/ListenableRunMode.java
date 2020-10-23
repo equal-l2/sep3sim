@@ -2,12 +2,11 @@ package sep3.model.runmode;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
 
 // CPU走行モードを変更した場合、その事実をモデルからビューに伝えるためのクラス
 public class ListenableRunMode {
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private RunMode rm;
-	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public RunMode getRunMode() {
 		return rm;

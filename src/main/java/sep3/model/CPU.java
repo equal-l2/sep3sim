@@ -27,7 +27,6 @@ public class CPU {
 	public static final int PSW_Z = 0x4;
 	public static final int PSW_V = 0x2;
 	public static final int PSW_C = 0x1;
-	private State currentState;        // CPU の命令実行サイクル状態変数
 	private final StateFactory sf;                    // その状態集合
 	private final OnOffFlag halted;
 	private final OnOffFlag illegal;    // CPU の停止状態（HLT）、不正命令実行状態（ILL）
@@ -38,6 +37,7 @@ public class CPU {
 	private final Decoder decoder;            // デコーダ
 	private final ALU alu;                // ALU
 	private final Register[] regs;                // 各種レジスタ
+	private State currentState;        // CPU の命令実行サイクル状態変数
 
 	// 主記憶装置とのインタフェースである、アドレスバス、データバスを受け取る
 	public CPU(Bus addrBus, Bus dataBus) {

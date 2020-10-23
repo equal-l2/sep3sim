@@ -6,18 +6,18 @@ import sep3.model.runmode.RunMode;
 import sep3.model.runmode.RunModeFactory;
 
 public class Model {
-	// 走行モードごとに仕事を生成
-	RunModeFactory rmf = new RunModeFactory();
-	// 現走行モードのコンテナ
-	ListenableRunMode currentRunMode = new ListenableRunMode();
-	// only for test
-	String msg;
 	private final Bus addrBus;
 	private final Bus dataBus;  // アドレスバスとデータバス
 	private final CPU cpu;               // SEP-3 CPU
 	private final Memory mem;               // 主記憶装置
 	private final OnOffFlag dispSW;            // R7, ISRの表示切替
 	private final OnOffFlag powerSW;           // 電源スイッチ
+	// 走行モードごとに仕事を生成
+	RunModeFactory rmf = new RunModeFactory();
+	// 現走行モードのコンテナ
+	ListenableRunMode currentRunMode = new ListenableRunMode();
+	// only for test
+	String msg;
 
 	// SEP-3 のモデル生成
 	public Model() {
@@ -75,7 +75,7 @@ public class Model {
 
 	String stack2string(StackTraceElement[] sa) {
 		String msg = "";
-		for (StackTraceElement ste: sa) {
+		for (StackTraceElement ste : sa) {
 			msg = msg + ste.toString() + "\n";
 		}
 		return msg;

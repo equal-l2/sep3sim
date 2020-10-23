@@ -6,8 +6,6 @@ import sep3.model.Register;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
-import java.util.Observer;
 
 public class R7ISRListener implements PropertyChangeListener {
 	private final Model model;
@@ -24,7 +22,7 @@ public class R7ISRListener implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		// モデル上でレジスタ値が変更されたら、該当するLEDアレイの表示を変更する。
 		// ただし、表示切り替えスイッチがwhenの時に限る。
-		Register r = (Register)evt.getSource();
+		Register r = (Register) evt.getSource();
 		if (model.getDispSW().isOn() == when) {
 			view.getR7ISR().setValue(r.getValue());
 		}

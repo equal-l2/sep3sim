@@ -28,7 +28,7 @@ public class DataInputSwitch extends JPanel {
 	// スイッチ状態を読み取って、16ビット数値データにして返す
 	public int getData() {
 		int v = 0;
-		for (ToggleSwitch sw: dataSwitch) {
+		for (ToggleSwitch sw : dataSwitch) {
 			v <<= 1;
 			if (sw.isSelected()) {
 				++v;

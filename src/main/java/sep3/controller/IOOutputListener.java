@@ -5,8 +5,6 @@ import sep3.View;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
-import java.util.Observer;
 
 public class IOOutputListener implements PropertyChangeListener {
 	private final Model model;
