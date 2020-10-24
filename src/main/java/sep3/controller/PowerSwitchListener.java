@@ -34,7 +34,6 @@ public class PowerSwitchListener implements ActionListener {
 			model.powerOff();
 			view.getR7ISR().powerOff();
 			view.getLCD().powerOff();
-			debug.powerOff();
 		}
 	}
 }
